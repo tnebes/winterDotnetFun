@@ -14,53 +14,45 @@ public static class Program
         while (true)
         {
             Util.ClearScreen();
-            Console.WriteLine(
-                "Select one of the following programmes to run\nor type 'exit' to quit the application: ");
+            Console.WriteLine("Select one of the following programmes to run\nor type 'exit' to quit the application: ");
             Console.WriteLine(StrongHorizontalLine);
             PrintProgrammes();
             Console.WriteLine(StrongHorizontalLine);
 
             string input = Console.ReadLine() ?? string.Empty;
 
-            if (!TryRunProgramme(input))
+            if (input == ExitCommand)
             {
                 Util.ClearScreen();
-                Console.WriteLine("Invalid programme selection");
-                Console.WriteLine();
+                Console.WriteLine("Exiting application...");
                 Thread.Sleep(1000);
+                Environment.Exit(0);
+            }
+
+            if (!long.TryParse(input, out long id) || !RunnableProgrammes.TryGetValue(id, out ProgrammeInfo? programme))
+            {
+                Util.ClearScreen();
+                Console.WriteLine("Invalid programme selection\n");
+                Thread.Sleep(1000);
+                continue;
+            }
+
+            if (Activator.CreateInstance(programme.ProgrammeType) is IProgramme instance)
+            {
+                Util.ClearScreen();
+                instance.Run();
+                Console.WriteLine("Programme executed. Returning to main menu...");
+                Thread.Sleep(2000);
             }
         }
     }
 
-    private static bool TryRunProgramme(string input)
-    {
-        if (input == ExitCommand)
-        {
-            Util.ClearScreen();
-            Console.WriteLine("Exiting application...");
-            Thread.Sleep(1000);
-            Environment.Exit(0);
-        }
-
-        if (!long.TryParse(input, out long programmeId) ||
-            !RunnableProgrammes.TryGetValue(programmeId, out var programme))
-            return false;
-
-        if (Activator.CreateInstance(programme.ProgrammeType) is not IProgramme programmeInstance) return false;
-
-        Util.ClearScreen();
-        programmeInstance.Run();
-        Console.WriteLine("Programme executed. Returning to main menu...");
-        Thread.Sleep(2000);
-        return true;
-    }
-
     private static void PrintProgrammes()
     {
+        int padding = RunnableProgrammes.Max(p => p.Value.Name.Length) + 4;
         foreach ((long id, ProgrammeInfo info) in RunnableProgrammes)
         {
-            string name = $"{id,2}: {info.Name}";
-            Console.WriteLine($"{name,-35} - {info.Description}");
+            Console.WriteLine($"{id,2}: {info.Name}".PadRight(padding) + $" - {info.Description}");
         }
     }
 }
