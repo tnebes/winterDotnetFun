@@ -14,7 +14,8 @@ public static class Program
         while (true)
         {
             Util.ClearScreen();
-            Console.WriteLine("Select one of the following programmes to run:");
+            Console.WriteLine(
+                "Select one of the following programmes to run\nor type 'exit' to quit the application: ");
             Console.WriteLine();
             PrintProgrammes();
             Console.WriteLine();
@@ -36,7 +37,7 @@ public static class Program
         if (input == ExitCommand)
         {
             Util.ClearScreen();
-            Console.WriteLine("Exiting programme...");
+            Console.WriteLine("Exiting application...");
             Thread.Sleep(1000);
             Environment.Exit(0);
         }

@@ -8,6 +8,8 @@ namespace WinterFun.Programmes;
 
 public sealed class RectangleArea : IProgramme
 {
+    private const string Instructions = "Enter the length and width of the rectangle to calculate its area.";
+    
     public void Run()
     {
         PrintInstructions();
@@ -35,7 +37,7 @@ public sealed class RectangleArea : IProgramme
     private static DimensionResult TryGetDimension(string dimensionName)
     {
         Console.Write($"Enter the {dimensionName}: ");
-        string input = Console.ReadLine();
+        string input = Console.ReadLine() ?? String.Empty;
 
         if (input == ExitCommand) return new DimensionResult(false, 0, true);
 
@@ -56,10 +58,7 @@ public sealed class RectangleArea : IProgramme
 
     private static void PrintInstructions()
     {
-        Util.ClearScreen();
-        Console.WriteLine("Enter the length and width of the rectangle to calculate its area.");
-        Console.WriteLine("Enter 'exit' to quit the programme.");
-        Console.WriteLine(HorizontalLine);
+        Util.PrintInstructions(Instructions);
     }
 
     private sealed record DimensionResult(bool IsValid, long Dimension, bool ShouldExit);

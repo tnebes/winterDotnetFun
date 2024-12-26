@@ -1,12 +1,9 @@
-using Microsoft.VisualBasic;
-using WinterFun.Constants;
-using WinterFun.Programmes;
-using Constants = WinterFun.Constants.Constants;
-
 namespace WinterFun.Programmes;
 
 public sealed class PositiveNegativeZero : IProgramme
 {
+    private const string Instructions = "Enter a number to check if it is positive, negative, or zero.";
+
     public void Run()
     {
         while (true)
@@ -14,13 +11,14 @@ public sealed class PositiveNegativeZero : IProgramme
             Util.ClearScreen();
             PrintInstructions();
             Console.WriteLine("Enter a number: ");
-            string input = Console.ReadLine();
+            string input = Console.ReadLine() ?? string.Empty;
 
             if (input == Constants.Constants.ExitCommand) return;
 
             if (!long.TryParse(input, out long number))
             {
                 Console.WriteLine("Invalid input. Please try again.");
+                Thread.Sleep(1000);
                 continue;
             }
 
@@ -37,15 +35,12 @@ public sealed class PositiveNegativeZero : IProgramme
                     break;
             }
 
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
         }
     }
 
     private static void PrintInstructions()
     {
-        Util.ClearScreen();
-        Console.WriteLine("Enter a number to check if it is positive, negative, or zero.");
-        Console.WriteLine("Enter 'exit' to quit the programme.");
-        Console.WriteLine(Constants.Constants.HorizontalLine);
+        Util.PrintInstructions(Instructions);
     }
 }
