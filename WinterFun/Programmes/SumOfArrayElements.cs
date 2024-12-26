@@ -1,10 +1,8 @@
-using System.Runtime.ExceptionServices;
-
 namespace WinterFun.Programmes;
 
 public class SumOfArrayElements : IProgramme
 {
-    private static readonly string Instructions =
+    private const string Instructions =
         "Enter the elements of an array and calculate the sum of the elements.\n" +
         "When you are done entering the elements, hit enter on a blank line to calculate the sum.";
 
@@ -13,21 +11,19 @@ public class SumOfArrayElements : IProgramme
         while (true)
         {
             Util.PrintInstructions(Instructions);
-            ListResult listResult = GetElements();
+            Util.WaitUntilKeyPress();
+            Util.ListResult listResult = GetElements();
 
-            if (listResult.IsExit)
-            {
-                return;
-            }
+            if (listResult.IsExit) return;
 
             List<long> elements = listResult.Elements;
             long sum = Sum(elements); // alternatively, elements.Sum();
             Console.WriteLine("The sum of [{0}] is: {1}", string.Join(", ", elements), sum);
-            Thread.Sleep(2000);
+            Util.WaitUntilKeyPress();
         }
     }
 
-    private static ListResult GetElements()
+    private static Util.ListResult GetElements()
     {
         List<long> elements = new();
         bool isExit = false;
@@ -35,6 +31,7 @@ public class SumOfArrayElements : IProgramme
 
         while (true)
         {
+            Util.ClearScreen();
             if (elementCount > 1) Console.WriteLine("Current numbers [{0}]", string.Join(", ", elements));
 
             Console.WriteLine("Enter element {0} of the array: ", elementCount);
@@ -54,20 +51,15 @@ public class SumOfArrayElements : IProgramme
             elementCount++;
         }
 
-        return new ListResult(elements, isExit);
+        return new Util.ListResult(elements, isExit);
     }
 
     private static long Sum(IEnumerable<long> elements)
     {
         long sum = 0;
 
-        foreach (long element in elements)
-        {
-            sum += element;
-        }
+        foreach (long element in elements) sum += element;
 
         return sum;
     }
-
-    private sealed record ListResult(List<long> Elements, bool IsExit);
 }

@@ -14,4 +14,12 @@ public static class Util
         Console.WriteLine(Constants.Constants.ExitProgrammeInstructions);
         Console.WriteLine(Constants.Constants.HorizontalLine);
     }
+
+    public static void WaitUntilKeyPress()
+    {
+        Console.WriteLine("Press any key to continue...");
+        Console.ReadKey();
+    }
+
+    public sealed record ListResult(List<long> Elements, bool IsExit);
 }

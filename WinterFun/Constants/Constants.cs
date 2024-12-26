@@ -26,6 +26,11 @@ public static class Constants
                 3,
                 new ProgrammeInfo(typeof(SumOfArrayElements),
                     "Sum of array elements - Calculate the sum of the elements of an array")
+            },
+            {
+                4,
+                new ProgrammeInfo(typeof(AverageGrades),
+                    "Average grades - Calculate the average of the grades of students")
             }
         }.ToImmutableDictionary();
 
