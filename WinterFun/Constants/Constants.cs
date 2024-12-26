@@ -31,6 +31,11 @@ public static class Constants
                 4,
                 new ProgrammeInfo(typeof(AverageGrades),
                     "Average grades - Calculate the average of the grades of students")
+            },
+            {
+                5,
+                new ProgrammeInfo(typeof(FibonacciSequence),
+                    "Fibonacci sequence - Calculate the Fibonacci sequence up to a given number")
             }
         }.ToImmutableDictionary();
 

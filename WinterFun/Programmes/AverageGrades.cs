@@ -6,7 +6,7 @@ using static WinterFun.Programmes.Util;
 
 namespace WinterFun.Programmes;
 
-public class AverageGrades : IProgramme
+public sealed class AverageGrades : IProgramme
 {
     private const string Instructions = "Enter the grades of students and calculate the average of the grades.\n" +
                                         "When you are done entering the grades, hit enter on a blank line to calculate the average.";
@@ -23,7 +23,8 @@ public class AverageGrades : IProgramme
 
             List<long> grades = listResult.Elements;
             double average = grades.Average();
-            Console.WriteLine("The average of [{0}] is: {1} ({2})", string.Join(", ", grades), Math.Ceiling(average), Math.Round(average, 2));
+            Console.WriteLine("The average of [{0}] is: {1} ({2})", string.Join(", ", grades), Math.Ceiling(average),
+                Math.Round(average, 2));
             WaitUntilKeyPress();
         }
     }
@@ -51,7 +52,7 @@ public class AverageGrades : IProgramme
             if (string.IsNullOrWhiteSpace(input)) break;
 
             if (!long.TryParse(input, out long grade)) continue;
-            
+
             if (grade is < 1 or > 5)
             {
                 Console.WriteLine("Grade must be between 0 and 5");

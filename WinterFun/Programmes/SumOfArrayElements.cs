@@ -1,6 +1,6 @@
 namespace WinterFun.Programmes;
 
-public class SumOfArrayElements : IProgramme
+public sealed class SumOfArrayElements : IProgramme
 {
     private const string Instructions =
         "Enter the elements of an array and calculate the sum of the elements.\n" +
