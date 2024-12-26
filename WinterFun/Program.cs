@@ -16,9 +16,9 @@ public static class Program
             Util.ClearScreen();
             Console.WriteLine(
                 "Select one of the following programmes to run\nor type 'exit' to quit the application: ");
-            Console.WriteLine();
+            Console.WriteLine(StrongHorizontalLine);
             PrintProgrammes();
-            Console.WriteLine();
+            Console.WriteLine(StrongHorizontalLine);
 
             string input = Console.ReadLine() ?? string.Empty;
 
@@ -57,6 +57,10 @@ public static class Program
 
     private static void PrintProgrammes()
     {
-        foreach ((long id, ProgrammeInfo info) in RunnableProgrammes) Console.WriteLine($"{id}: {info.Description}");
+        foreach ((long id, ProgrammeInfo info) in RunnableProgrammes)
+        {
+            string name = $"{id,2}: {info.Name}";
+            Console.WriteLine($"{name,-35} - {info.Description}");
+        }
     }
 }

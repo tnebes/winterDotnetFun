@@ -1,3 +1,9 @@
+#region
+
+using System.Numerics;
+
+#endregion
+
 namespace WinterFun.Programmes;
 
 public sealed class FibonacciSequence : IProgramme
@@ -28,15 +34,15 @@ public sealed class FibonacciSequence : IProgramme
                 continue;
             }
 
-            List<long> sequence = GenerateFibonacciSequence(terms);
+            List<BigInteger> sequence = GenerateFibonacciSequence(terms);
             Console.WriteLine("The Fibonacci sequence with {0} terms is: {1}", terms, string.Join(", ", sequence));
             Util.WaitUntilKeyPress();
         }
     }
 
-    private List<long> GenerateFibonacciSequence(int result)
+    private List<BigInteger> GenerateFibonacciSequence(int result)
     {
-        List<long> sequence = new() { 0, 1 };
+        List<BigInteger> sequence = new() { 0, 1 };
         for (int i = 2; i < result; i++) sequence.Add(sequence[i - 1] + sequence[i - 2]);
 
         return sequence;
