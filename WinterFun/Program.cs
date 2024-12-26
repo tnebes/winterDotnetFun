@@ -33,6 +33,14 @@ public static class Program
 
     private static bool TryRunProgramme(string input)
     {
+        if (input == ExitCommand)
+        {
+            Util.ClearScreen();
+            Console.WriteLine("Exiting programme...");
+            Thread.Sleep(1000);
+            Environment.Exit(0);
+        }
+
         if (!long.TryParse(input, out long programmeId) ||
             !RunnableProgrammes.TryGetValue(programmeId, out var programme))
             return false;
@@ -48,6 +56,6 @@ public static class Program
 
     private static void PrintProgrammes()
     {
-        foreach (var (id, info) in RunnableProgrammes) Console.WriteLine($"{id}: {info.Description}");
+        foreach ((long id, ProgrammeInfo info) in RunnableProgrammes) Console.WriteLine($"{id}: {info.Description}");
     }
 }

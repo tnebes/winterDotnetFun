@@ -16,6 +16,11 @@ public static class Constants
                 1,
                 new ProgrammeInfo(typeof(RectangleArea),
                     "Rectangle area calculation - Calculate the area of a rectangle")
+            },
+            {
+                2,
+                new ProgrammeInfo(typeof(PositiveNegativeZero),
+                    "Positive, negative or zero - Check if a number is positive, negative or zero")
             }
         }.ToImmutableDictionary();
 
