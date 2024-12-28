@@ -71,6 +71,12 @@ public static class Constants
                 new ProgrammeInfo(typeof(Calculator),
                     "Calculator",
                     "Perform basic arithmetic operations")
+            },
+            {
+                11,
+                new ProgrammeInfo(typeof(PasswordGenerator),
+                    "Password generator",
+                    "Generate a password of a given length")
             }
         }.ToImmutableDictionary();
 
@@ -79,4 +85,21 @@ public static class Constants
     public static readonly string ExitProgrammeInstructions = "Enter 'exit' to quit the programme.";
     public static readonly string HorizontalLine = "-".PadRight(49, '-');
     public static readonly string StrongHorizontalLine = "=".PadRight(49, '=');
+
+    public static class Characters
+    {
+        public const string UpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        public const string LowerCase = "abcdefghijklmnopqrstuvwxyz";
+        public const string Numbers = "0123456789";
+        public const string Punctuation = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+    }
+
+    public static class ConsoleKeys
+    {
+        public const ConsoleKey Generate = ConsoleKey.Enter;
+        public const ConsoleKey ToggleOption = ConsoleKey.Spacebar;
+        public const ConsoleKey Exit = ConsoleKey.Q;
+        public const ConsoleKey SaveToFile = ConsoleKey.S;
+        public const ConsoleKey CopyToClipboard = ConsoleKey.C;
+    }
 }
