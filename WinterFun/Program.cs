@@ -14,7 +14,8 @@ public static class Program
         while (true)
         {
             Util.ClearScreen();
-            Console.WriteLine("Select one of the following programmes to run\nor type 'exit' to quit the application: ");
+            Console.WriteLine(
+                "Select one of the following programmes to run\nor type 'exit' to quit the application: ");
             Console.WriteLine(StrongHorizontalLine);
             PrintProgrammes();
             Console.WriteLine(StrongHorizontalLine);
@@ -51,8 +52,6 @@ public static class Program
     {
         int padding = RunnableProgrammes.Max(p => p.Value.Name.Length) + 4;
         foreach ((long id, ProgrammeInfo info) in RunnableProgrammes)
-        {
             Console.WriteLine($"{id,2}: {info.Name}".PadRight(padding) + $" - {info.Description}");
-        }
     }
 }
