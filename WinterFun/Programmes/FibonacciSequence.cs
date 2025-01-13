@@ -36,6 +36,7 @@ public sealed class FibonacciSequence : IProgramme
 
             List<BigInteger> sequence = GenerateFibonacciSequence(terms);
             Console.WriteLine("The Fibonacci sequence with {0} terms is: {1}", terms, string.Join(", ", sequence));
+            Util.PrintNewlines(Constants.Constants.DefaultNewlineCount);
             Util.WaitUntilKeyPress();
         }
     }

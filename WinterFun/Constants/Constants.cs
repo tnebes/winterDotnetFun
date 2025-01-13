@@ -85,6 +85,7 @@ public static class Constants
     public static readonly string ExitProgrammeInstructions = "Enter 'exit' to quit the programme.";
     public static readonly string HorizontalLine = "-".PadRight(49, '-');
     public static readonly string StrongHorizontalLine = "=".PadRight(49, '=');
+    public static readonly int DefaultNewlineCount = 2;
 
     public static class Characters
     {

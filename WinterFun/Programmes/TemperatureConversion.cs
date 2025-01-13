@@ -45,6 +45,7 @@ public sealed class TemperatureConversion : IProgramme
 
             Util.ClearScreen();
             Console.WriteLine(result);
+            Util.PrintNewlines(Constants.Constants.DefaultNewlineCount);
             Util.WaitUntilKeyPress();
         }
     }

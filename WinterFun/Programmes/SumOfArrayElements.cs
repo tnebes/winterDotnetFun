@@ -19,6 +19,7 @@ public sealed class SumOfArrayElements : IProgramme
             List<long> elements = listResult.Elements;
             long sum = Sum(elements); // alternatively, elements.Sum();
             Console.WriteLine("The sum of [{0}] is: {1}", string.Join(", ", elements), sum);
+            Util.PrintNewlines(Constants.Constants.DefaultNewlineCount);
             Util.WaitUntilKeyPress();
         }
     }

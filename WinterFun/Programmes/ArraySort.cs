@@ -31,6 +31,7 @@ public sealed class ArraySort : IProgramme
             Console.WriteLine($"Original array: [{string.Join(", ", array)}]");
             Console.WriteLine($"Sorted array: [{string.Join(", ", sortedArray)}]");
             Console.WriteLine($"Steps taken: {steps}");
+            Util.PrintNewlines(Constants.Constants.DefaultNewlineCount);
             Util.WaitUntilKeyPress();
         }
     }

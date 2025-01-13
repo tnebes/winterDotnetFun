@@ -20,6 +20,7 @@ public sealed class VowelCounter : IProgramme
             Util.ClearScreen();
             Console.WriteLine("String: {0}\nVowels: [{1}]\nCount: {2}", input, string.Join(", ", foundVowels),
                 foundVowels.Count);
+            Util.PrintNewlines(Constants.Constants.DefaultNewlineCount);
             Util.WaitUntilKeyPress();
         }
     }

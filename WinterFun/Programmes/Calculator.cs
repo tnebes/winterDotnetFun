@@ -33,6 +33,7 @@ public sealed class Calculator : IProgramme
                 ? "Invalid operation or division by zero"
                 : $"{firstNumber} {operation} {secondNumber} = {result}");
 
+            Util.PrintNewlines(Constants.Constants.DefaultNewlineCount);
             Util.WaitUntilKeyPress();
         }
     }

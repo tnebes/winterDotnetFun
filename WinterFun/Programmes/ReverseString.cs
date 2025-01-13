@@ -20,6 +20,7 @@ public sealed class ReverseString : IProgramme
             string reversed = new string(characters);
 
             Console.WriteLine("The reversed string is: {0}", reversed);
+            Util.PrintNewlines(Constants.Constants.DefaultNewlineCount);
             Util.WaitUntilKeyPress();
         }
     }

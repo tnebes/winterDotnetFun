@@ -25,6 +25,8 @@ public sealed class AverageGrades : IProgramme
             double average = grades.Average();
             Console.WriteLine("The average of [{0}] is: {1} ({2})", string.Join(", ", grades), Math.Ceiling(average),
                 Math.Round(average, 2));
+                
+            Util.PrintNewlines(Constants.Constants.DefaultNewlineCount);
             WaitUntilKeyPress();
         }
     }
@@ -38,7 +40,8 @@ public sealed class AverageGrades : IProgramme
         while (true)
         {
             ClearScreen();
-            if (gradeCount > 1) Console.WriteLine("Current grades [{0}]", string.Join(", ", grades));
+            if (gradeCount > 1)
+                Console.WriteLine("Current grades [{0}]", string.Join(", ", grades));
 
             Console.WriteLine("Enter grade {0} of the students: ", gradeCount);
             string input = Console.ReadLine() ?? string.Empty;

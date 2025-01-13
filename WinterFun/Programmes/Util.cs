@@ -21,5 +21,15 @@ public static class Util
         Console.ReadKey();
     }
 
+    public static void PrintNewlines(int number = 1)
+    {
+        if (number < 1)
+        {
+            throw new ArgumentException("The number of new lines cannot be smaller than 1.");
+        }
+        string padding = string.Concat(Enumerable.Repeat<string>("\n", number));
+        Console.Write(padding);
+    }
+
     public sealed record ListResult(List<long> Elements, bool IsExit);
 }

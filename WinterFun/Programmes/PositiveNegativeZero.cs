@@ -35,7 +35,8 @@ public sealed class PositiveNegativeZero : IProgramme
                     break;
             }
 
-            Thread.Sleep(1000);
+            Util.PrintNewlines(Constants.Constants.DefaultNewlineCount);
+            Util.WaitUntilKeyPress();
         }
     }
 

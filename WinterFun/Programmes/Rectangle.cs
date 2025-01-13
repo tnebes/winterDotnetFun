@@ -12,9 +12,9 @@ public sealed class RectangleArea : IProgramme
 
     public void Run()
     {
-        PrintInstructions();
         while (true)
         {
+            PrintInstructions();
             DimensionResult lengthResult = TryGetDimension("length");
             if (lengthResult.IsValid)
             {
@@ -31,6 +31,10 @@ public sealed class RectangleArea : IProgramme
 
             if (lengthResult.ShouldExit)
                 return;
+                
+            Util.PrintNewlines(Constants.Constants.DefaultNewlineCount);
+            Util.WaitUntilKeyPress();
+            Util.ClearScreen();
         }
     }
 
